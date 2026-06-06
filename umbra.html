@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umbra</title>
+
+<style>
+
+body {
+    user-select: none;
+}
+
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe0b2, #fff3e0, #ffccbc);
+    background-attachment: fixed;
+}
+
+html, body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+.container{
+    max-width:100%;
+}
+
+.right img{
+    max-width:100%;
+    height:auto;
+}
+
+/* TITLU */
+.title{
+    text-align:center;
+    font-size:50px;
+    font-weight:bold;
+    margin-top:10px;
+
+    background: linear-gradient(90deg, #d84315, #ff9800, #ffd54f);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* layout */
+.container{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    width:95%;
+    margin:15px auto;
+    gap:1px;
+}
+/* STÂNGA */
+.left{
+    width:70%;
+}
+
+/* IDEI CU ALINEAT */
+.idea{
+    font-size:16px;
+    font-weight:bold;
+    margin:12px 0;
+    line-height:1.6;
+
+    /* AICI ESTE ALINEATUL */
+    text-indent: 30px;
+
+    background: linear-gradient(90deg, #d84315, #ff9800, #ffd54f);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    opacity:0;
+    transition:opacity 0.8s ease;
+}
+
+/* afișare */
+.idea.show{
+    opacity:1;
+}
+
+/* DREAPTA */
+.right{
+    width:30%;
+    display:flex;
+    justify-content:flex-end;
+}
+
+.right img{
+    width:450px;
+    height:450px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+/* BUTON */
+button{
+    position:fixed;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+
+    padding:14px 40px;
+    font-size:16px;
+    font-weight:bold;
+    letter-spacing:1px;
+
+    color:white;
+    border:none;
+    border-radius:50px;
+
+    background: linear-gradient(90deg, #d84315, #ff9800, #ffd54f);
+    
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover{
+    transform:translateX(-50%) scale(1.05);
+}
+
+button:disabled{
+    opacity:0.5;
+    cursor:not-allowed;
+}
+</style>
+</head>
+
+<body>
+
+<div class="title">Umbra</div>
+
+<div class="container">
+
+    <div class="left">
+
+        <p class="idea">Când un corp oprește drumul luminii, se crează o zonă de întuneric în spatele acelui corp. Această zonă, unde lumina nu poate ajunge, este numită umbră. Obiectul care blochează lumina se numește corp opac. Dacă corpul ar fi transparent, lumina ar trece prin el, iar umbra ar fi foarte slabă sau deloc prezentă.</p>
+
+        <p class="idea">Umbra nu este mereu aceeași. Ea se schimbă constant în funcție de două lucruri principale: poziția sursei de lumină și distanța.<br></p>
+		<p class="idea"><b>1. Poziția Soarelui:</b> Dacă privești umbra ta dimineața, vei observa că este foarte lungă. Pe măsură ce Soarele urcă pe cer, umbra devine din ce în ce mai scurtă. Seara, când Soarele coboară din nou, umbra se întinde iar.<br>
+		<p class="idea"><b>2. Distanța:</b> De exemplu, dacă apropii o lanternă de un obiect, umbra proiectată pe perete va deveni mai mare și mai puțin clară. Dacă îndepărtezi lanterna, umbra va deveni mai mică, dar mai clară.<br></p>
+		<p class="idea"><b>Există mai multe tipuri de corpuri:<br></p>
+		<p class="idea">  Corpuri opace:</b> <br>
+		   Corpurile care nu permit trecerea luminii prin ele. Atunci când razele de lumină "lovesc" un corp opac, ele sunt fie absorbite, fie reflectate, dar nu pot trece prin acel obiect.<br>
+		   ex:lemn, metal, piatră.<br></p>
+		   
+		  <p class="idea"> <b>Corpurile translucide:</b><br>
+		   Sunt corpurile care permit trecerea luminii prin ele, dar nu se văd clar obiectele din spatele lor.<br>
+		   ex:hârtie de pergament, cer înnorat.<br></p>
+		   
+		   <p class="idea"><b>Corpuri transparente:</b><br>
+		   Permit trecerea luminii prin ele fără nicio modificare. Razele de lumină trec prin aceste corpuri în linie dreaptă, păstrându-și direcția și claritatea.<br>
+		   ex:sticlă, aer, apă curată</p>
+		   
+		   
+
+    </div>
+
+    <div class="right">
+        <img src=poza.png alt="imagine">
+    </div>
+
+</div>
+
+<button onclick="showNext()">PLAY</button>
+
+<script>
+let index = 0;
+const items = document.querySelectorAll(".idea");
+
+function showNext(){
+    if(index >= items.length){
+        document.querySelector("button").disabled = true;
+        document.querySelector("button").textContent = "GATA";
+        return;
+    }
+
+    items[index].classList.add("show");
+    index++;
+}
+</script>
+
+</body>
+</html>

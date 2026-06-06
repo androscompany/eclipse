@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umbra</title>
+
+<style>
+
+body {
+    user-select: none;
+}
+
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe0b2, #fff3e0, #ffccbc);
+    background-attachment: fixed;
+}
+
+html, body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+.container{
+    max-width:100%;
+}
+
+.right img{
+    max-width:100%;
+    height:auto;
+}
+
+/* TITLU */
+.title{
+    text-align:center;
+    font-size:50px;
+    font-weight:bold;
+    margin-top:20px;
+
+    background: linear-gradient(90deg, #d84315, #ff9800, #ffd54f);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* layout */
+.container{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    width:95%;
+    margin:15px auto;
+    gap:1px;
+}
+/* STÂNGA */
+.left{
+    width:70%;
+}
+
+/* IDEI CU ALINEAT */
+.idea{
+    font-size:16px;
+    font-weight:bold;
+    margin:12px 0;
+    line-height:1.6;
+
+    /* AICI ESTE ALINEATUL */
+    text-indent: 30px;
+
+    background: linear-gradient(90deg, #d84315, #ff9800, #ffd54f);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    opacity:0;
+    transition:opacity 0.8s ease;
+}
+
+/* afișare */
+.idea.show{
+    opacity:1;
+}
+
+/* DREAPTA */
+.right{
+    width:30%;
+    display:flex;
+    justify-content:flex-end;
+}
+
+.right img{
+    width:450px;
+    height:450px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+/* BUTON */
+button{
+    position:fixed;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+
+    padding:14px 40px;
+    font-size:16px;
+    font-weight:bold;
+    letter-spacing:1px;
+
+    color:white;
+    border:none;
+    border-radius:50px;
+
+    background: linear-gradient(90deg, #d84315, #ff9800, #ffd54f);
+    
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover{
+    transform:translateX(-50%) scale(1.05);
+}
+
+button:disabled{
+    opacity:0.5;
+    cursor:not-allowed;
+}
+</style>
+</head>
+
+<body>
+
+<div class="title">Penumbra</div>
+
+<div class="container">
+
+    <div class="left">
+
+        <p class="idea">Ai observat vreodată că, atunci când stai sub un copac sau lângă un obiect, umbra ta nu este întotdeauna perfect neagră și clară? Uneori, marginile umbrei par „estompate” sau devin gri și mai puțin definite. Această zonă de mijloc, care nu este nici lumină totală, nici întuneric total, se numește penumbră.</p>
+
+        <p class="idea"><b>De ce apare umbra?</b><br></p>
+		<p class="idea"><b>1. Surse punctiforme:</b> Acestea sunt surse de lumină foarte mici, ca un punct (de exemplu, un laser). Acestea creează umbre foarte clare, fără penumbră.<br>
+		<p class="idea"><b>2. Surse întinse:</b> Acestea sunt sursele de lumină care au o suprafață (de exemplu, Soarele, un bec mare sau o fereastră prin care intră lumina). Deoarece sursa este mare, lumina vine din mai multe direcții, ceea ce creează acea zonă de penumbră la marginea umbrii.<br></p>
+		<p class="idea"><b>Importanța penumbrei:</b><br></p>
+		<p class="idea">  Penumbra nu este doar un concept de fizică, ea are un rol în modul în care funcționează ochii noștri și aparatele foto:</b> <br>
+		   <p class="idea"><b>Fotografie:</b> Fotografilor le place să folosească zonele de penumbră pentru a crea „umbre moi”. Dacă folosesc un flash mic și direct, umbrele sunt urâte și foarte negre. Dacă folosesc un softbox (o cutie care împrăștie lumina), creează o penumbră mare, făcând pozele să arate mai naturale.<br></p>
+		   <p class="idea"><b>Vizibilitate:</b> În zilele înnorate, nu avem o sursă de lumină directă (Soarele este ascuns de nori). Norii acționează ca o sursă de lumină extinsă, transformând tot cerul într-o zonă de penumbră uriașă. De aceea, nu avem umbre clare pe jos în zilele cu nori.<br></p>
+		   
+		   
+
+    </div>
+
+    <div class="right">
+        <img src=poza2.png alt="imagine">
+    </div>
+
+</div>
+
+<button onclick="showNext()">PLAY</button>
+
+<script>
+let index = 0;
+const items = document.querySelectorAll(".idea");
+
+function showNext(){
+    if(index >= items.length){
+        document.querySelector("button").disabled = true;
+        document.querySelector("button").textContent = "GATA";
+        return;
+    }
+
+    items[index].classList.add("show");
+    index++;
+}
+</script>
+
+</body>
+</html>

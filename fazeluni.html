@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umbra</title>
+
+<style>
+
+body {
+    user-select: none;
+}
+
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe0b2, #fff3e0, #ffccbc);
+    background-attachment: fixed;
+}
+
+html, body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+.container{
+    max-width:100%;
+}
+
+.right img{
+    max-width:100%;
+    height:auto;
+}
+
+/* TITLU */
+.title{
+    text-align:center;
+    font-size:50px;
+    font-weight:bold;
+    margin-top:20px;
+
+    background: linear-gradient(90deg, #d84315, #ff9800, #ffd54f);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* layout */
+.container{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    width:95%;
+    margin:15px auto;
+    gap:1px;
+}
+/* STÂNGA */
+.left{
+    width:70%;
+}
+
+/* IDEI CU ALINEAT */
+.idea{
+    font-size:16px;
+    font-weight:bold;
+    margin:12px 0;
+    line-height:1.6;
+
+    /* AICI ESTE ALINEATUL */
+    text-indent: 30px;
+
+    background: linear-gradient(90deg, #d84315, #ff9800, #ffd54f);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    opacity:0;
+    transition:opacity 0.8s ease;
+}
+
+/* afișare */
+.idea.show{
+    opacity:1;
+}
+
+/* DREAPTA */
+.right{
+    width:30%;
+    display:flex;
+    justify-content:flex-end;
+}
+
+.right img{
+    width:450px;
+    height:450px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+/* BUTON */
+button{
+    position:fixed;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+
+    padding:14px 40px;
+    font-size:16px;
+    font-weight:bold;
+    letter-spacing:1px;
+
+    color:white;
+    border:none;
+    border-radius:50px;
+
+    background: linear-gradient(90deg, #d84315, #ff9800, #ffd54f);
+    
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover{
+    transform:translateX(-50%) scale(1.05);
+}
+
+button:disabled{
+    opacity:0.5;
+    cursor:not-allowed;
+}
+</style>
+</head>
+
+<body>
+
+<div class="title">Fazele Lunii</div>
+
+<div class="container">
+
+    <div class="left">
+
+        <p class="idea">Luna nu strălucește singură. Ea funcționează ca o oglindă uriașă care reflectă lumina Soarelui. Deoarece Luna se rotește în jurul Pământului, de pe Pământ vedem doar o parte aceasta, care este iluminată de Soare. Pe măsură ce Luna se mișcă, partea luminoasă pe care o observăm noi se schimbă.
+
+</p>
+
+        <p class="idea"><b>Fazele Lunii sunt:</b></p>
+		<p class="idea"><b>Luna Nouă:</b> În această fază, Luna se află între Pământ și Soare. Partea care este iluminată este îndreptată spre Soare, iar partea pe care o vedem noi este întunecată. De aceea, Luna pare „dispărută” de pe cer.</p>
+		<p class="idea"><b>Luna Crescente:</b> După Luna Nouă, Luna începe să „crească”. Vedem o mică parte iluminată care devine din ce în ce mai mare.</p>
+		<p class="idea"><b>Primul Cuart:</b> Luna pare să fie tăiată exact pe jumătate. Este ca și cum am vedea doar o felie de măr.</p> 
+		   <p class="idea"><b>Luna Plină:</b> Aceasta este faza cea mai spectaculoasă! Luna se află în partea opusă Soarelui față de Pământ, ceea ce înseamnă că întreaga parte iluminată este orientată spre noi. Vedem un disc strălucitor și rotund.</p>
+		   <p class="idea"><b>Luna Descrescătoare:</b> După ce a fost plină, Luna începe să „scadă”. Partea iluminată pe care o vedem devine din ce în ce mai mică.</p>
+		   <p class="idea"><b>Ultimul Cuart:</b> Din nou, Luna pare să fie tăiată pe jumătate, dar de partea opusă față de Primul Cuart.</p>
+           <p class="idea"><b>Știați că:</b> Un ciclu complet al fazelor Lunii (de la o Lună Nouă la următoarea) durează aproximativ 29,5 zile? Aceasta este perioada pe care Luna o folosește pentru a face o tură completă în jurul planetei noastre.</p>
+    </div>
+
+    <div class="right">
+        <img src=poza4.png alt="imagine">
+    </div>
+
+</div>
+
+<button onclick="showNext()">PLAY</button>
+
+<script>
+let index = 0;
+const items = document.querySelectorAll(".idea");
+
+function showNext(){
+    if(index >= items.length){
+        document.querySelector("button").disabled = true;
+        document.querySelector("button").textContent = "GATA";
+        return;
+    }
+
+    items[index].classList.add("show");
+    index++;
+}
+</script>
+
+</body>
+</html>

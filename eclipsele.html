@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Umbra</title>
+
+<style>
+
+body {
+    user-select: none;
+}
+
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe0b2, #fff3e0, #ffccbc);
+    background-attachment: fixed;
+}
+
+html, body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+.container{
+    max-width:100%;
+}
+
+.right img{
+    max-width:100%;
+    height:auto;
+}
+
+/* TITLU */
+.title{
+    text-align:center;
+    font-size:50px;
+    font-weight:bold;
+    margin-top:7px;
+
+    background: linear-gradient(90deg, #d84315, #ff9800, #ffd54f);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* layout */
+.container{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    width:95%;
+    margin:15px auto;
+    gap:1px;
+}
+/* STÂNGA */
+.left{
+    width:70%;
+}
+
+/* IDEI CU ALINEAT */
+.idea{
+    font-size:16px;
+    font-weight:bold;
+    margin:12px 0;
+    line-height:1.6;
+
+    /* AICI ESTE ALINEATUL */
+    text-indent: 30px;
+
+    background: linear-gradient(90deg, #d84315, #ff9800, #ffd54f);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    opacity:0;
+    transition:opacity 0.8s ease;
+}
+
+/* afișare */
+.idea.show{
+    opacity:1;
+}
+
+/* DREAPTA */
+.right{
+    width:30%;
+    display:flex;
+    justify-content:flex-end;
+}
+
+.right img{
+    width:450px;
+    height:450px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+/* BUTON */
+button{
+    position:fixed;
+    bottom:6px;
+    left:50%;
+    transform:translateX(-50%);
+
+    padding:14px 40px;
+    font-size:16px;
+    font-weight:bold;
+    letter-spacing:1px;
+
+    color:white;
+    border:none;
+    border-radius:50px;
+
+    background: linear-gradient(90deg, #d84315, #ff9800, #ffd54f);
+    
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover{
+    transform:translateX(-50%) scale(1.05);
+}
+
+button:disabled{
+    opacity:0.5;
+    cursor:not-allowed;
+}
+</style>
+</head>
+
+<body>
+
+<div class="title">Eclipsele Soarelui și ale Lunii</div>
+
+<div class="container">
+
+    <div class="left">
+
+        <p class="idea">O eclipsă de Soare are loc atunci când Luna trece exact între Pământ și Soare, blocând lumina solară.</p>
+
+        <p class="idea">Luna proiectează o umbră pe suprafața Pământului. Deoarece Luna este mult mai mică decât Pământul, umbra ei acoperă doar o zonă restrânsă.</p>
+		<p class="idea"><b>Tipuri de eclipse:</b></p>
+		<p class="idea"><b>Totală:</b>Luna acoperă complet discul Soarelui. Cerul devine întunecat ca noaptea, iar temperatura scade.</p>
+		<p class="idea"><b>Parțială:</b> Luna acoperă doar o parte din Soare, făcând ca acesta să arate ca o felie de măr mușcată.</p>
+		<p class="idea"><b>Inelară:</b> Luna este prea departe de Pământ pentru a acoperi tot Soarele, lăsând vizibil un "inel de foc" strălucitor în jurul ei.</b></p> 
+		   <p class="idea">Atenție! Nu privi niciodată direct spre Soare în timpul unei eclipse fără ochelari speciali de protecție. Razele solare pot arde retina și îți pot afecta vederea permanent.<br></p>
+		   <p class="idea">Eclipsa de Lună are loc atunci când Pământul trece între Soare și Lună, blocând lumina solară să mai ajungă la satelitul nostru natural.</p>
+		   <p class="idea"><b>Cum se întâmplă:</b> Pământul "aruncă" propria umbră asupra Lunii. Acest fenomen se întâmplă doar în timpul fazei de Lună Plină.</p>
+           <p class="idea"><b>De ce nu avem eclipse în fiecare lună?</b></p>
+		   <p class="idea">Răspunsul stă în înclinația orbitei. Orbita Lunii în jurul Pământului nu este perfect aliniată cu orbita Pământului în jurul Soarelui. Ea este înclinată cu aproximativ 
+5°
+
+ . Din acest motiv, de cele mai multe ori, Luna trece puțin pe deasupra sau pe dedesubtul Soarelui (la eclipsa de Soare) sau a umbrei Pământului (la eclipsa de Lună).</p>
+		   
+
+    </div>
+
+    <div class="right">
+        <img src=poza3.png alt="imagine">
+    </div>
+
+</div>
+
+<button onclick="showNext()">PLAY</button>
+
+<script>
+let index = 0;
+const items = document.querySelectorAll(".idea");
+
+function showNext(){
+    if(index >= items.length){
+        document.querySelector("button").disabled = true;
+        document.querySelector("button").textContent = "GATA";
+        return;
+    }
+
+    items[index].classList.add("show");
+    index++;
+}
+</script>
+
+</body>
+</html>
